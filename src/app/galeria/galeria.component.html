@@ -1,0 +1,26 @@
+<select (change)="filterByCategory($event)">
+
+    <option value="">Todas las categorías</option>
+    <option value="nature">Naturaleza</option>
+    <option value="city">Ciudad</option>
+  </select>
+  
+  
+  
+  <div class="gallery">
+    <div *ngFor="let image of filteredImages" class="image-item" (click)="showDetails(image)">
+      <img [src]="image.url" alt="{{image.title}}" />
+      <h3>{{image.title}}</h3>
+      <p>{{image.description}}</p>
+    </div>
+  </div>
+
+  
+<div *ngIf="selectedImage" class="modal">
+    <h2>{{selectedImage.title}}</h2>
+    <img [src]="selectedImage.url" alt="{{selectedImage.title}}">
+    <p>{{selectedImage.description}}</p>
+    <button (click)="closeDetails()">Cerrar</button>
+  </div>
+  
+  
